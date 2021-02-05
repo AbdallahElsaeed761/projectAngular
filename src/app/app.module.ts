@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUPComponent } from './sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +17,14 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    SignUPComponent
+    SignUPComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,HttpClientModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
