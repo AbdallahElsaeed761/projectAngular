@@ -1,0 +1,43 @@
+<!--
+<div *ngFor="let item of blogs" class="container text-center">
+  <a routerLink="/blogs">{{item.auther}}</a><br/>
+  <img [src]="'http://localhost:3000/'+item.photo" style="height: 500px; width: 500px; "><br/>
+  <a routerLink="/blogs">{{item.body}}</a><br/>
+  <a routerLink="/blogs">{{item.tags}}</a><br/>
+  <a routerLink="/blogs">{{item.updatedAt}}</a> <br/>
+  <a routerLink="/blogs">{{item.createdAt}}</a> <br/>
+
+  <hr/>
+</div> -->
+<body>
+<div *ngFor="let item of blogs" class="container text-center">
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>
+      <p routerLink="/blogs">{{item.title}}</p>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <p routerLink="/blogs">{{item.tags}}</p>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img [src]="'http://localhost:3000/'+item.photo" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p routerLink="/blogs">{{item.body}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+<!-- <ul class="pagination">
+  <li class="page-item" *ngFor="let p of pages;let j = index">
+      <a class="page-link" (click)="ind=j">{{j+1}}</a>
+  </li>
+
+  |slice:ind*5:ind*5+5
+</ul> -->
+</div>
+</body>

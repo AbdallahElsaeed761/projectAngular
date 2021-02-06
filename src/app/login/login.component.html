@@ -1,13 +1,14 @@
 <div class="container-fluid">
-  <form #user="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <form #user="ngForm" (ngSubmit)="onSubmit(user.value)" novalidate>
+    {{user.value|json}}
   <div class="form-group">
-    <label for="name">UserName</label>
-    <input type="text" name="name" id="name" class="form-control" placeholder="please enter your Name" aria-describedby="helpId">
+    <label for="username">UserName</label>
+    <input type="text" name="username" id="username" ngModel class="form-control" placeholder="please enter your Name" aria-describedby="helpId">
 
   </div>
   <div class="form-group">
     <label for="password">password</label>
-    <input type="password" name="password" id="password" class="form-control" placeholder="please enter your Email" aria-describedby="helpId">
+    <input type="password" name="password" id="password" ngModel class="form-control" placeholder="please enter your Email" aria-describedby="helpId">
 
   </div>
   <button class="btn btn-primary" type="submit">

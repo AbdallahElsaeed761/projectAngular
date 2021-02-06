@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 import { EnrollmentService } from '../enrollment.service';
+import { AuthService } from '../services/auth.service';
 import { Login } from '../_models/login';
 
 @Component({
@@ -8,17 +11,32 @@ import { Login } from '../_models/login';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  log:Login[]|any;
+  logine:Login[]|any;
 
-  constructor(public _http:EnrollmentService) { }
+  errorMessage: any;
+  public error:string='';
+  constructor(public routs: Router, public auth: AuthService) { }
+
+
+  onSubmit(log:any) {
+    console.log(log);
+
+    this.auth.login(log.username, log.password)
+      .pipe(first())
+      .subscribe(
+        result =>
+          this.routs.navigate(['/home']),
+        // console.log(result)
+        err => this.error = 'Could not authenticate'
+      );
+
+  }
 
   ngOnInit(): void {
   }
-  onSubmit()
-  {
-    this._http.login(this.log)
-    .subscribe(
-      a=>this.log=a
-    )
-  }
+
+
+
 }
+
+

@@ -1,11 +1,11 @@
 <div class="container-fluid">
-  <form #user="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
-
+  <form #user="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit(user.value)" novalidate>
+    {{user.value|json}}
   <div class="form-group">
     <label for="firstname">First Name</label>
-    <input type="text" required ngModel #name="ngModel"
-      [class.is-invalid]="name.invalid&&name.touched"  name="firstname" id="firstname" class="form-control" placeholder="please enter your First Name" aria-describedby="helpId">
-    <small class="text-danger" [class.d-none]="name.valid||name.untouched">this is required</small>
+    <input type="text" required ngModel #firstname="ngModel"
+      [class.is-invalid]="firstname.invalid&&firstname.touched"  name="firstname" id="firstname" class="form-control" placeholder="please enter your First Name" aria-describedby="helpId">
+    <small class="text-danger" [class.d-none]="firstname.valid||firstname.untouched">this is required</small>
   </div>
   <div class="form-group">
     <label for="lastname">Last Name</label>
@@ -18,14 +18,14 @@
 
   </div>
   <div class="form-group">
-    <label for="name">UserName</label>
-    <input type="text" ngModel required name="name" id="name" #usern="ngModel" class="form-control" placeholder="please enter your Name" aria-describedby="helpId">
-    <small class="text-danger" [class.d-none]="usern.valid||usern.untouched">this is required</small>
+    <label for="username">UserName</label>
+    <input type="text" ngModel required name="username" id="username" #username="ngModel" class="form-control" placeholder="please enter your Name" aria-describedby="helpId">
+    <small class="text-danger" [class.d-none]="username.valid||username.untouched">this is required</small>
   </div>
   <div class="form-group">
     <label for="password">password</label>
-    <input type="password" ngModel required name="password" id="password" #pass="ngModel" class="form-control" placeholder="please enter your Email" aria-describedby="helpId">
-    <small class="text-danger" [class.d-none]="pass.valid||pass.untouched">this is required</small>
+    <input type="password" ngModel required name="password" id="password" #password="ngModel" class="form-control" placeholder="please enter your Email" aria-describedby="helpId">
+    <small class="text-danger" [class.d-none]="password.valid||password.untouched">this is required</small>
   </div>
   <button [disabled]="user.form.invalid" class="btn btn-primary" type="submit">
     Submit Form

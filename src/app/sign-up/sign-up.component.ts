@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EnrollmentService } from '../enrollment.service';
 import { Signup } from '../_models/signup';
 
@@ -9,21 +10,37 @@ import { Signup } from '../_models/signup';
 })
 export class SignUPComponent implements OnInit {
 
-  s:Signup[] |any;
+  s:Signup|any ;
   submitted=false;
-  constructor(public _enroll:EnrollmentService) { }
+  errorMessage:any;
+  constructor(public _enroll:EnrollmentService,public router :Router) { }
 
   ngOnInit(): void {
   }
-  onSubmit(){
-    this.submitted=true;
-    this._enroll.enroll(this.s)
-    .subscribe(
 
-      data=>console.log('success',data),
-      error=>console.log('Error',error)
+  onSubmit(rig:any) {
+  this.submitted=true;
+
+    console.log(rig);
+
+
+    return this._enroll.enroll(rig).subscribe(
+      a => {
+        this.router.navigate([
+          '/login'
+        ])
+      },
+      error => {
+        this.errorMessage = error.message;
+        console.error('There was an error!', error);
+      }
     )
   }
-
-
 }
+//
+
+
+
+
+
+
