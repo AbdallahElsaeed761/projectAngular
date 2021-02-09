@@ -7,7 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SignUPComponent } from './sign-up/sign-up.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// <<<<<<< HEAD
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -17,6 +18,7 @@ import { EnrollmentService } from './enrollment.service';
 import{TokenInterceptorService} from './services/token-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule}from '@angular/material/card';
+import{BlogService}from './services/blog.service';
 // import{MatButtonModule} from '@angular/material/button';
 
 
@@ -25,6 +27,16 @@ export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
 
+// =======
+// import { HttpClientModule } from '@angular/common/http';
+// import { HomeComponent } from './home/home.component';
+//import { BlogEditComponent } from './blog-edit/blog-edit.component';
+
+import { ProfileComponent } from './profile/profile.component';
+import { FollowingComponent } from './following/following.component';
+import { FollowersComponent } from './followers/followers.component';
+import { BlogAddComponent} from './blogadd/blogadd.component';
+// >>>>>>> 96d21db6daf3c39fb818677e0139ffdd4d4366d4
 
 @NgModule({
   declarations: [
@@ -34,11 +46,17 @@ export function tokenGetter() {
     LoginComponent,
     SignUPComponent,
     HomeComponent,
+    ProfileComponent,
+    FollowingComponent,
+    FollowersComponent,
+    BlogAddComponent,
+// <<<<<<< HEAD
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,MatCardModule,
+    AppRoutingModule,MatCardModule,ReactiveFormsModule,
+
     FormsModule,HttpClientModule,JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -52,13 +70,24 @@ export function tokenGetter() {
     AuthService,
     AuthGuard,
     EnrollmentService,
+    BlogService,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
       multi:true,
-    }
+    },
+
+// =======
+    // BlogEditComponent,
 
   ],
+  // imports: [
+  //   BrowserModule,
+  //   AppRoutingModule,
+  //   FormsModule,
+  //   HttpClientModule,
+// >>>>>>> 96d21db6daf3c39fb818677e0139ffdd4d4366d4
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

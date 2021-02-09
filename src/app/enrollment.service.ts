@@ -20,9 +20,23 @@ export class EnrollmentService {
   }
   getAll()
   {
+
+    return this._http.get<Blog[]>("http://localhost:3000/blogs/");
+  }
+  getNew()
+  {
     return this._http.get<Blog[]>("http://localhost:3000/blogs/new");
   }
+  getUserData() {
+    return this._http.get<Signup>("http://localhost:3000/users/mypage")
+
+  }
+  editUserData(user) {
+    return this._http.patch<Signup>("http://localhost:3000/users/edit", user)
+  }
+
   constructor( public _http:HttpClient) { }
+
 
 
 }
