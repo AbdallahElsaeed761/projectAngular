@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EnrollmentService } from '../enrollment.service';
 
 @Component({
   selector: 'app-following',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./following.component.css']
 })
 export class FollowingComponent implements OnInit {
-
-  constructor() { }
+user:any;
+  constructor(public httpservice:EnrollmentService) { }
 
   ngOnInit(): void {
+    this.httpservice.getFollowing().subscribe(r=>{
+      console.log(r.following[0].photo);
+      this.user=r})
   }
 
 }

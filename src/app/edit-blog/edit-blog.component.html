@@ -1,0 +1,25 @@
+<app-header></app-header>
+<p>edit-blog works!</p>
+
+<div class="modal-content">
+  <div class="modal-header " style=" background-color:#bdbdbd;">
+    <span class="close">&times;</span>
+
+  </div>
+  <div class="modal-body">
+
+
+      <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" [(ngModel)]="blog.title"  placeholder="title"/>
+
+      <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" [(ngModel)]="blog.body"  placeholder="body"/>
+
+      <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" [(ngModel)]="blog.tags" placeholder="tag" />
+      <input type="file" class="form-control" placeholder="add picture " (change)="onFileSelected($event)">
+
+
+
+  </div>
+  <div class="modal-footer"  style=" background-color:#bdbdbd;">
+  <button  style="background-color: cornflowerblue; width:50px ; margin-top: 10px;" (click)="edit()">save</button>
+  </div>
+</div>

@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BlogAddComponent } from './blogadd/blogadd.component';
+import { EditBlogComponent } from './edit-blog/edit-blog.component';
 import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
-// <<<<<<< HEAD
-// =======
-// import { BlogAddComponent } from './blog-add/blog-add.component';
-// import { BlogEditComponent } from './blog-edit/blog-edit.component';
-// >>>>>>> 96d21db6daf3c39fb818677e0139ffdd4d4366d4
+
 import { HomeComponent } from './home/home.component';
 
 import { LoginComponent } from './login/login.component';
@@ -22,6 +19,8 @@ const routes: Routes = [
 {path:'follower',component:FollowersComponent},
 {path:'following',component:FollowingComponent},
 {path:'addblog',component:BlogAddComponent},
+{path:'edit/:id',component:EditBlogComponent},
+
 
 
   {path:"**",component:HomeComponent},

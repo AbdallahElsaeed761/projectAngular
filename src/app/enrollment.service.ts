@@ -8,6 +8,7 @@ import { Blog } from './_models/blog';
   providedIn: 'root'
 })
 export class EnrollmentService {
+  logedUser:any;
 
   enroll(user:Signup)
   {
@@ -28,14 +29,21 @@ export class EnrollmentService {
     return this._http.get<Blog[]>("http://localhost:3000/blogs/new");
   }
   getUserData() {
-    return this._http.get<Signup>("http://localhost:3000/users/mypage")
+    return this._http.get<Signup>("http://localhost:3000/users/mypage",{headers :{authorization : this.logedUser}})
 
   }
   editUserData(user) {
     return this._http.patch<Signup>("http://localhost:3000/users/edit", user)
   }
 
-  constructor( public _http:HttpClient) { }
+  constructor( public _http:HttpClient) {
+    this.logedUser = (localStorage.getItem('access_token'));
+  }
+  getFollowing()
+  {
+    return this._http.get<any>("http://localhost:3000/users/following" ,{headers :{authorization : this.logedUser}});
+
+  }
 
 
 

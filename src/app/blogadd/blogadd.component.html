@@ -1,21 +1,21 @@
 <app-header></app-header>
-<p>blogadd works!</p>
 
-<div class="container">
+
+<form [formGroup]=addForm (ngSubmit)="save()" class="container">
   <div class="row g-3">
       <div class="col-md-10">
 
-        <input type="text" class="form-control" placeholder="title" [(ngModel)]="blog.title" required>
+        <input type="text" class="form-control" placeholder="title" formControlName="title" required>
       </div>
       <div class="col-md-10">
-        <input type="text" name="body" class="form-control" id="" cols="80" rows="10" [(ngModel)]="blog.body" required/>
+        <input type="text" name="body"  placeholder="enter your own blog body" class="form-control" id="" cols="80" rows="10" formControlName="body" required/>
       </div>
       <div class="col-md-10">
 
           <input type="file" class="form-control" placeholder="add picture " (change)="onFileSelected($event)">
         </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-primary" (click)="save()">save</button>
+        <input type="submit" class="btn btn-primary" value="Save"/>
       </div>
   </div>
-</div>
+</form>

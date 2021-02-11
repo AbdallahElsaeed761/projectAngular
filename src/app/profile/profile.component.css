@@ -41,3 +41,13 @@ h2{
   color: #ff8d1e;
   padding-top: 3%;
 }
+/* fa fa-pencil{
+  margin-left: 300%;
+  margin-top: 7%;
+} */
+mat-card-title{
+  overflow: hidden;
+}
+#picon{
+  float: right;
+}

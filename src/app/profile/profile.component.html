@@ -49,14 +49,18 @@
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>
+      <mat-card-title class="d-flex justify-content-between">
         <p routerLink="/blogs">{{item.title}}</p>
+        <p id="picon"><a routerLink="/edit/{{item._id}}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          </p>
+          <p (click)="del(item._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></p>
       </mat-card-title>
       <mat-card-subtitle>
         <p routerLink="/blogs">{{item.tags}}</p>
+
       </mat-card-subtitle>
     </mat-card-header>
-    <img [src]="'http://localhost:3000/'+item.photo" alt="Photo of a Shiba Inu">
+    <img [src]="'http://localhost:3000/'+item.photo" class="img-fluid" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <p routerLink="/blogs">{{item.body}}
       </p>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EnrollmentService } from '../enrollment.service';
+import { BlogService } from '../services/blog.service';
 import { Blog } from '../_models/blog';
 import { Signup } from '../_models/signup';
 
@@ -13,7 +15,7 @@ export class ProfileComponent implements OnInit {
   user: Signup = new Signup("", "", "", "", "","");
 
   // ind:number=0;
-  constructor(public serviceblog:EnrollmentService) { }
+  constructor(public serviceblog:EnrollmentService,public blogservice:BlogService,public router:Router) { }
 upload(photo){
       this.serviceblog.editUserData({photo:photo}).subscribe(
         b=>{
@@ -22,7 +24,7 @@ upload(photo){
       )
     }
 ngOnInit(): void {
-    this.serviceblog.getAll().subscribe(
+    this.blogservice.getMyBlog().subscribe(
       a=>{
         this.blogs=a;
       }
@@ -33,25 +35,21 @@ ngOnInit(): void {
       }
     )
 }
+del(id:string){
+let r=confirm("Are You Sure Delete Blog");
+if(r==true)
+{
+  this.blogservice.deleteblog(id).subscribe(
+    d=>{
+  console.log(d);
+
+  })
+}
+this.router.navigate(['../profile']);
+// else{
+//   return ;
+// }
+
 
 }
-/*upload(photo){
-      this.userService.editUserData({photo:photo}).subscribe(
-        b=>{
-          console.log(b)
-        }
-      )
-    }
-  ngOnInit(): void {
-    this.serviceblog.getMyBlog().subscribe(
-      a=>{
-        this.blogs=a;
-      }
-    )
-    this.userService.getUserData().subscribe(
-      b=>{
-        this.user=b;
-      }
-    )
-  }
-*/
+}

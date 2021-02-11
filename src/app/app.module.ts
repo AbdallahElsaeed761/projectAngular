@@ -18,25 +18,23 @@ import { EnrollmentService } from './enrollment.service';
 import{TokenInterceptorService} from './services/token-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule}from '@angular/material/card';
-import{BlogService}from './services/blog.service';
-// import{MatButtonModule} from '@angular/material/button';
+
+import{MatButtonModule} from '@angular/material/button';
 
 
-// ...
+
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
 
-// =======
-// import { HttpClientModule } from '@angular/common/http';
-// import { HomeComponent } from './home/home.component';
-//import { BlogEditComponent } from './blog-edit/blog-edit.component';
+
 
 import { ProfileComponent } from './profile/profile.component';
 import { FollowingComponent } from './following/following.component';
 import { FollowersComponent } from './followers/followers.component';
 import { BlogAddComponent} from './blogadd/blogadd.component';
-// >>>>>>> 96d21db6daf3c39fb818677e0139ffdd4d4366d4
+import { EditBlogComponent } from './edit-blog/edit-blog.component';
+
 
 @NgModule({
   declarations: [
@@ -50,12 +48,13 @@ import { BlogAddComponent} from './blogadd/blogadd.component';
     FollowingComponent,
     FollowersComponent,
     BlogAddComponent,
-// <<<<<<< HEAD
+    EditBlogComponent,
+
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,MatCardModule,ReactiveFormsModule,
+    AppRoutingModule,MatCardModule,ReactiveFormsModule,MatButtonModule,
 
     FormsModule,HttpClientModule,JwtModule.forRoot({
       config: {
@@ -70,7 +69,7 @@ import { BlogAddComponent} from './blogadd/blogadd.component';
     AuthService,
     AuthGuard,
     EnrollmentService,
-    BlogService,
+
     {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,

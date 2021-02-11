@@ -14,7 +14,7 @@ export class BlogAddComponent implements OnInit {
   selectedFile :File|any;
   addForm: FormGroup;
   newBlog= new FormData();
-  blog:Blog = new Blog('',[''] ,'',);
+  blog:Blog |null=null;
   userName:string;
 
 
@@ -22,7 +22,7 @@ export class BlogAddComponent implements OnInit {
     this.userName = blogService.logedUser.userName;
     this.addForm = this.fb.group({
       title: '',
-      tags:[''],
+      // tags:[''],
       body: '',
     });
   }
@@ -38,14 +38,14 @@ export class BlogAddComponent implements OnInit {
 
   save(){
 
-    this.newBlog.append('title',this.blog.title||'');
+    this.newBlog.append('title',this.addForm.value.title||'');
     //this.newBlog.append('tags',this.blog.tags||);
-    this.newBlog.append('body', this.blog.body||'');
+    this.newBlog.append('body', this.addForm.value.body||'');
     console.log(this.newBlog);
     this.blogService.creat(this.newBlog).subscribe(
       a=>{
       console.log(a);
-      this.router.navigate(['']);
+      this.router.navigate(['../profile']);
     })
 
   }
