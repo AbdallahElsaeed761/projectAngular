@@ -34,6 +34,10 @@ import { FollowingComponent } from './following/following.component';
 import { FollowersComponent } from './followers/followers.component';
 import { BlogAddComponent} from './blogadd/blogadd.component';
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
+import { ProfileFriendComponent } from './profile-friend/profile-friend.component';
+import { HomeBlogsComponent } from './home-blogs/home-blogs.component';
+import { SearchComponent } from './search/search.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -49,12 +53,16 @@ import { EditBlogComponent } from './edit-blog/edit-blog.component';
     FollowersComponent,
     BlogAddComponent,
     EditBlogComponent,
+    ProfileFriendComponent,
+    HomeBlogsComponent,
+    SearchComponent,
 
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,MatCardModule,ReactiveFormsModule,MatButtonModule,
+    AppRoutingModule,MatCardModule,ReactiveFormsModule,MatButtonModule,NgbModule,
+
 
     FormsModule,HttpClientModule,JwtModule.forRoot({
       config: {

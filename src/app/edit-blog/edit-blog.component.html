@@ -6,20 +6,20 @@
     <span class="close">&times;</span>
 
   </div>
-  <div class="modal-body">
+  <form [formGroup]=addForm (ngSubmit)="edit()" class="container">
+    <div class="modal-body">
 
+      <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" formControlName="title" [(ngModel)]="blog.title"  placeholder="title"/>
 
-      <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" [(ngModel)]="blog.title"  placeholder="title"/>
+      <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" formControlName="body" [(ngModel)]="blog.body"  placeholder="body"/>
+      <!-- <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" formControlName="tags" [(ngModel)]="blog.tags" placeholder="tag" /> -->
 
-      <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" [(ngModel)]="blog.body"  placeholder="body"/>
-
-      <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" [(ngModel)]="blog.tags" placeholder="tag" />
       <input type="file" class="form-control" placeholder="add picture " (change)="onFileSelected($event)">
-
-
-
-  </div>
+    </div>
   <div class="modal-footer"  style=" background-color:#bdbdbd;">
-  <button  style="background-color: cornflowerblue; width:50px ; margin-top: 10px;" (click)="edit()">save</button>
+  <!-- <button  style="background-color: cornflowerblue; width:50px ; margin-top: 10px;" >save</button> -->
+  <input type="submit" class="btn btn-primary" value="Save"/>
+
   </div>
+</form>
 </div>

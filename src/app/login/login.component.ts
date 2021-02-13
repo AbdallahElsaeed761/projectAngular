@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         result =>
-          this.routs.navigate(['/profile']),
+          this.routs.navigate(['/homeBlog']),
         // console.log(result)
         err => this.error = 'Could not authenticate'
       );

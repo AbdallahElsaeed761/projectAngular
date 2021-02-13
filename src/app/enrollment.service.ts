@@ -32,8 +32,8 @@ export class EnrollmentService {
     return this._http.get<Signup>("http://localhost:3000/users/mypage",{headers :{authorization : this.logedUser}})
 
   }
-  editUserData(user) {
-    return this._http.patch<Signup>("http://localhost:3000/users/edit", user)
+  editUserData(id:string,user:FormData) {
+    return this._http.patch<Signup>("http://localhost:3000/users/"+id, user,{headers :{authorization : this.logedUser}})
   }
 
   constructor( public _http:HttpClient) {
@@ -44,6 +44,27 @@ export class EnrollmentService {
     return this._http.get<any>("http://localhost:3000/users/following" ,{headers :{authorization : this.logedUser}});
 
   }
+  getFollowers()
+  {
+    return this._http.get<any>("http://localhost:3000/users/followers" ,{headers :{authorization : this.logedUser}});
+
+  }
+  followUser(username) {
+    return this._http.get<Signup>("http://localhost:3000/users/follow/" + username,{headers :{authorization : this.logedUser}})
+  }
+  unfollowUser(username) {
+    return this._http.get<Signup>("http://localhost:3000/users/unfollow/" + username,{headers :{authorization : this.logedUser}})
+  }
+  getUser(username) {
+    return this._http.get<Signup>("http://localhost:3000/users/" + username,{headers :{authorization : this.logedUser}})
+  }
+
+  searchUser(searched) {
+    return this._http.get<Signup[]>("http://localhost:3000/users/search/" + searched,{headers :{authorization : this.logedUser}})
+  }
+
+
+
 
 
 

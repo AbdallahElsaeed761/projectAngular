@@ -1,0 +1,51 @@
+<app-header></app-header>
+<div class="container text-center">
+  <div class="container row">
+      <div class="img col-3">
+        <img [src]="'http://localhost:3000/'+user.photo" class="m-3 mt-3 rounded-circle col-12 mw-10">
+
+          <!-- Modal -->
+
+      </div>
+      <div class="col-6">
+          <span>{{user.firstname}} {{user.lastname}}</span><br>
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Follow</button><br /> -->
+          <a routerLink="/addblog">Add Blogs</a>&nbsp;&nbsp;&nbsp;
+          <a routerLink="/follower">Followers</a>&nbsp;&nbsp;&nbsp;
+          <a routerLink="/following">Following</a>
+      </div>
+  </div>
+</div>
+<hr/>
+
+<body>
+<div *ngFor="let item of blogs" class="container text-center">
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        <a [routerLink]="['/profile/'+item.auther.username]">{{item.auther.username}}</a><br />
+        <p routerLink="/blogs">{{item.title}}</p>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <p routerLink="/blogs">{{item.tags}}</p>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img class="img-fluid" [src]="'http://localhost:3000/'+item.photo" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p routerLink="/blogs">{{item.body}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>COMMENT</button>
+    </mat-card-actions>
+  </mat-card>
+
+  </div>
+
+  </body>
+
+
+

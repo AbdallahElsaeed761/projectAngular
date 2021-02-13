@@ -1,2 +1,8 @@
 <app-header></app-header>
 <p>followers works!</p>
+
+
+<div *ngFor="let x of user.followers">
+  <img [src]="'http://localhost:3000/'+x.photo" class="m-3 mt-3 rounded-circle col-12 mw-10">
+  <p >{{x.firstname}}</p>
+</div>

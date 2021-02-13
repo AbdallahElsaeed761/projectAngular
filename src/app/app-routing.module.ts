@@ -4,11 +4,14 @@ import { BlogAddComponent } from './blogadd/blogadd.component';
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
 import { FollowersComponent } from './followers/followers.component';
 import { FollowingComponent } from './following/following.component';
+import { HomeBlogsComponent } from './home-blogs/home-blogs.component';
 
 import { HomeComponent } from './home/home.component';
 
 import { LoginComponent } from './login/login.component';
+import { ProfileFriendComponent } from './profile-friend/profile-friend.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchComponent } from './search/search.component';
 import { SignUPComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
@@ -20,6 +23,10 @@ const routes: Routes = [
 {path:'following',component:FollowingComponent},
 {path:'addblog',component:BlogAddComponent},
 {path:'edit/:id',component:EditBlogComponent},
+{path:'homeBlog',component:HomeBlogsComponent},
+{path:'profile/:username',component:ProfileFriendComponent},
+{path:'search/:searched',component:SearchComponent},
+
 
 
 

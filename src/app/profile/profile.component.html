@@ -3,8 +3,8 @@
   <div class="container row">
       <div class="img col-3">
           <img [src]="'http://localhost:3000/'+user.photo" class="m-3 mt-3 rounded-circle col-12 mw-10">
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open
-              Modal</button>
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">edit
+              profile</button>
           <!-- Modal -->
           <div id="myModal" class="modal fade" role="dialog">
               <div class="modal-dialog">
@@ -16,13 +16,19 @@
                       </div>
                       <div class="modal-body">
                           <div class="form-group">
-                              <label for="photo">up load your photo</label>
+                            <form [formGroup]="editForm">
+                            <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" formControlName="firstname" [(ngModel)]="user.firstname"  placeholder="title"/>
+                            <input class="form-control" style="height: 40px; width: 100%; margin: 10px;" type="text" formControlName="lastname" [(ngModel)]="user.lastname"  placeholder="title"/>
+
+                            <input type="file" class="form-control" placeholder="add picture " (change)="onFileSelected($event)">
+                          </form>
+                              <!-- <label for="photo">up load your photo</label>
                               <input type="file" name="photo" id="photo" class="form-control" #photo
-                                  aria-describedby="helpId">
+                                  aria-describedby="helpId"> -->
                           </div>
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="close col-6" (click)="upload(photo.value)">Done</button>
+                          <button type="button" class="close col-6" (click)="save()">Done</button>
 
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
@@ -33,8 +39,8 @@
           </div>
       </div>
       <div class="col-6">
-          <span>{{user.firstname}} {{user.lastname}}</span>&nbsp;&nbsp;&nbsp;
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Follow</button><br />
+          <span>{{user.firstname}} {{user.lastname}}</span><br>
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Follow</button><br /> -->
           <a routerLink="/addblog">Add Blogs</a>&nbsp;&nbsp;&nbsp;
           <a routerLink="/follower">Followers</a>&nbsp;&nbsp;&nbsp;
           <a routerLink="/following">Following</a>
@@ -66,8 +72,32 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Like</button>
-      <button mat-button>Comment</button>
+
+        <ngb-accordion #acc="ngbAccordion" class="col-md-4 text-right" style="margin-right: 15px;">
+        <ngb-panel [title]="[item.comments.length +' Comments']">
+
+        <span>{{item.comments.length}}</span> Comments
+        <ng-template ngbPanelContent>
+        <div class="card text-center col-12 " width="100%" *ngFor="let c of item.comments"
+        style="background-color: rgb(226, 226, 226); width: fit-content; border-radius: 30px 30px; padding: 10px;">
+        <div class="m-1 form-inline">
+        <div class="card-body m-2">
+        <h5 class="card-title profile">{{c.commenter}}</h5>
+        <p class="card-text text-justify">{{c.body}}</p>
+        <hr />
+        </div>
+        </div>
+        </div>
+        <div class="col-md-12"><input type="text" width="100%" name="Comment" class="commentinput"
+        placeholder="Write a comment....." #addcomment>
+        <input type="button" value="send" (click)="addComment(item._id,addcomment.value)">
+        </div>
+        </ng-template>
+
+        </ngb-panel>
+
+        </ngb-accordion>
+        <hr />
     </mat-card-actions>
   </mat-card>
 </div>

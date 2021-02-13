@@ -9,8 +9,10 @@
 } */
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('../../assets/1.jpg');
   background-size: cover;
+  width: 30px;
+  height: 30px;
 
 
 }
