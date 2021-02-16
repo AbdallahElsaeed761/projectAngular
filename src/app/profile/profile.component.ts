@@ -33,13 +33,13 @@ export class ProfileComponent implements OnInit {
     console.log(this.selectedFile);
   }
   addComment(id,comment) {
-    let refaat={
+    let re={
       id:id,
       Comment:{
         body:comment
       }
     }
-    this.blogservice.addComment(refaat).subscribe(
+    this.blogservice.addComment(re).subscribe(
       a => {
         console.log(a);
 

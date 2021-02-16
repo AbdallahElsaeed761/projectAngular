@@ -2,7 +2,7 @@
 <div class="container text-center">
   <div class="container row">
       <div class="img col-3">
-          <img [src]="'http://localhost:3000/'+user.photo" class="m-3 mt-3 rounded-circle col-12 mw-10">
+          <img [src]="'http://localhost:3000/'+user.photo!" class="m-3 mt-3 rounded-circle col-12 mw-10">
           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">edit
               profile</button>
           <!-- Modal -->
@@ -74,7 +74,7 @@
     <mat-card-actions>
 
         <ngb-accordion #acc="ngbAccordion" class="col-md-4 text-right" style="margin-right: 15px;">
-        <ngb-panel [title]="[item.comments.length +' Comments']">
+        <ngb-panel [title]="item.comments.length +' Comments'">
 
         <span>{{item.comments.length}}</span> Comments
         <ng-template ngbPanelContent>

@@ -20,6 +20,21 @@ export class HomeBlogsComponent implements OnInit {
     this.auth.logout()
   }
   constructor(public serviceblog:BlogService,public auth:AuthService, public userService: EnrollmentService, public router: Router) { }
+  addComment(id,comment) {
+    let re={
+      id:id,
+      Comment:{
+        body:comment
+      }
+    }
+    this.serviceblog.addComment(re).subscribe(
+      a => {
+        console.log(a);
+
+      }
+    )
+    location.reload();
+  }
 
   ngOnInit(): void {
     this.serviceblog.getFollowingBlog().subscribe(
