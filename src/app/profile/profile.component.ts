@@ -78,9 +78,7 @@ if(r==true)
   })
 }
 this.router.navigate(['../profile']);
-// else{
-//   return ;
-// }
+
 
 
 }

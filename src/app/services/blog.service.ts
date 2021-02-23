@@ -13,10 +13,7 @@ export class BlogService {
 
   };
 
-  // addBlog(blog:Blog){
-  //   return this.http.post<Blog>("http://localhost:3000/blogs" , blog);
 
-  // }
 
   getNew(){
     return this.http.get<Blog []>("http://localhost:3000/blogs/new");
@@ -26,9 +23,7 @@ export class BlogService {
     return this.http.patch<Blog>("http://localhost:3000/blogs/"+id , blog,{headers :{authorization : this.logedUser}});
   }
 
-  // getAll(){
-  //   return this.http.get<Blog[]>("http://localhost:3000/Blogs/new")
-  // }
+
   getMyBlog(){
     return this.http.get<Blog[]>("http://localhost:3000/blogs/myblogs",{headers :{authorization : this.logedUser}});
   }
@@ -47,7 +42,7 @@ export class BlogService {
   }
 
   getFollowingBlog() {
-    return this.http.get<Blog[]>("http://localhost:3000/blogs/home",{headers :{authorization : this.logedUser}});
+    return this.http.get<any>("http://localhost:3000/blogs/home",{headers :{authorization : this.logedUser}});
   }
 
   searchBlog(searched) {

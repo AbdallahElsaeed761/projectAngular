@@ -9,10 +9,11 @@
       </div>
       <div class="col-6">
           <span>{{user.firstname}} {{user.lastname}}</span><br>
+          <br><br>
           <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Follow</button><br /> -->
           <a routerLink="/addblog">Add Blogs</a>&nbsp;&nbsp;&nbsp;
-          <a routerLink="/follower">Followers</a>&nbsp;&nbsp;&nbsp;
-          <a routerLink="/following">Following</a>
+          <!-- <a routerLink="/follower">Followers</a>&nbsp;&nbsp;&nbsp;
+          <a routerLink="/following">Following</a> -->
       </div>
   </div>
 </div>
@@ -25,7 +26,7 @@
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>
-        <a [routerLink]="['/profile/'+item.auther.username]">{{item.auther.username}}</a><br />
+        <a [routerLink]="['/profile/'+item.auther._id]">{{item.auther.username}}</a><br />
         <p routerLink="/blogs">{{item.title}}</p>
       </mat-card-title>
       <mat-card-subtitle>

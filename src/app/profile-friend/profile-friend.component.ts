@@ -12,61 +12,39 @@ import { Signup } from '../_models/signup';
   styleUrls: ['./profile-friend.component.css']
 })
 export class ProfileFriendComponent implements OnInit {
-  user: Signup[] |any;
-  blogs: Blog[]|any;
+  user:any;
+  blogs: any;
   // owner:Register=new Register("","","","","");
   follow: boolean|any;
   userId:any;
   btn: string = "follow";
-  constructor(public blogService: BlogService, public userservice: EnrollmentService, public authservice: AuthService, public router: Router, public ar: ActivatedRoute) { }
-  followMe() {
-    if(this.btn=="follow"){
-    this.userservice.followUser(this.user.username).subscribe(
-      a => {
-        console.log(a);
-        location.reload();
-      }
-    )
+  followingArr:string[]|any;
+  follOrUn:string="follow";
+  username: string = "";
+  sss:Signup|any;
+  constructor(public blogService: BlogService, public userservice: EnrollmentService, public authservice: AuthService, public router: Router, public ar: ActivatedRoute) {
 
-  }
-    else{
-      this.userservice.unfollowUser(this.user.username).subscribe(
-        a=>{
-          console.log(a);
-         // location.reload();
-        }
-      )
-
-    }
-  }
-  ngOnInit(): void {
-    let username: string = "";
     this.userId=localStorage.getItem('userId');
-
+    //debugger
     this.ar.params.subscribe(
       a => (
-        username = a['username']
+        this.username =a ['_id']
       )
     )
-
-
-    this.userservice.getUser(username).subscribe(
+        console.log(this.username);
+       // debugger;
+    this.userservice.getUserAndBlogs(this.username).subscribe(
       a => {
-        console.log(this.userId);
-        console.log(a[0].following);
+
+        this.sss=a.result;
+        this.blogs=a.Blogs
 
 
-        if(a[0].followers?.includes(this.userId))
-        {
-          this.btn="unfollow";
-        }
-        else
-        {
-          this.btn="follow";
-        }
-        console.log(a);
+        console.log(a.result.photo);
+
+
         this.user = a;
-        this.blogService.getFBlog(this.user[0]._id).subscribe(
+        this.blogService.getFBlog(this.user._id).subscribe(
           a => {
             console.log(a);
             this.blogs = a.reverse();
@@ -74,11 +52,79 @@ export class ProfileFriendComponent implements OnInit {
         )
       }
 
+
     )
+
+  console.log(this.user);
+
+
+
+  }
+
+
+
+  followMe(event:any,id:String){
+
+
+    if(event.target.innerText==="unfollow"){
+
+      this.userservice.unfollowUser(this.username).subscribe(r=>{
+        console.log(r);
+        this.ngOnInit();
+      },e=>{
+        console.log(e);
+      });
+
+    }else{
+
+
+      this.userservice.followUser(this.username).subscribe(r=>{
+        this.ngOnInit();
+        console.log(r);
+      },e=>{
+        console.log(e);
+      });
+
+    }
+
+
+  }
+
+  addComment(id,comment) {
+    let re={
+      id:id,
+      Comment:{
+        body:comment
+      }
+    }
+  }
+
+  ngOnInit(): void {
+
+    this.userservice.getUserData2().subscribe(res=>{
+
+      this.followingArr = res.following;
+
+        for(let i=0; i<this.followingArr.length;i++){
+
+         if(this.followingArr[i]==this.username){
+           this.follOrUn="unfollow"
+
+            break;
+          }else{
+           this.follOrUn="follow"
+
+          }
+        }
+     });
+
+
+
+
     this.userservice.getUserData().subscribe(
       a => {
         a.following||[''].findIndex(value => {
-          if (value == username)
+          if (value == this.username)
           {
             this.btn = "unfollow";
             //  console.log(this.follow);
@@ -92,7 +138,10 @@ export class ProfileFriendComponent implements OnInit {
     );
     //console.log(this.owner);
 
+
   }
+
+
 
 }
 

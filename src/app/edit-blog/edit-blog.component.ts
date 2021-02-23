@@ -44,26 +44,18 @@ newBlog= new FormData();
   }
   edit()
   {
-    // this.newBlog.append('title',this.addForm.value.title||'');
+
     this.newBlog.append('title',this.addForm.get("title")?.value);
-    this.newBlog.append('tags',this.addForm.get("tags")?.value);
+    // this.newBlog.append('tags',this.addForm.get("tags")?.value);
     this.newBlog.append('body', this.addForm.get("body")?.value);
       this.httpService.edit(this.p||'',this.newBlog).subscribe(
-      // this.serviceblog.editUserData(this.user._id!,this.users).subscribe(
+
 
         a=>{
-          //this.router.navigateByUrl('/home');
-          console.log(a);
-          // this.Router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+
           this.Router.navigate(['../profile']);
 
-
-  // }
-  // )
 })
   }
 }
-/*
 
-
-*/

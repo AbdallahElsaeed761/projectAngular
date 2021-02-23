@@ -32,6 +32,10 @@ export class EnrollmentService {
     return this._http.get<Signup>("http://localhost:3000/users/mypage",{headers :{authorization : this.logedUser}})
 
   }
+  getUserData2() {
+    return this._http.get<any>("http://localhost:3000/users/mypage",{headers :{authorization : this.logedUser}})
+
+  }
   editUserData(id:string,user:FormData) {
     return this._http.patch<Signup>("http://localhost:3000/users/"+id, user,{headers :{authorization : this.logedUser}})
   }
@@ -49,14 +53,18 @@ export class EnrollmentService {
     return this._http.get<any>("http://localhost:3000/users/followers" ,{headers :{authorization : this.logedUser}});
 
   }
-  followUser(username) {
-    return this._http.get<Signup>("http://localhost:3000/users/follow/" + username,{headers :{authorization : this.logedUser}})
+  followUser(id) {
+    return this._http.post<any>("http://localhost:3000/users/follow/" + id,null,{headers :{authorization : this.logedUser}})
   }
-  unfollowUser(username) {
-    return this._http.get<Signup>("http://localhost:3000/users/unfollow/" + username,{headers :{authorization : this.logedUser}})
+  unfollowUser(id) {
+    return this._http.post<any>("http://localhost:3000/users/unfollow/" + id,null,{headers :{authorization : this.logedUser}})
   }
   getUser(username) {
-    return this._http.get<Signup>("http://localhost:3000/users/" + username,{headers :{authorization : this.logedUser}})
+    return this._http.get<any>("http://localhost:3000/users/" + username,{headers :{authorization : this.logedUser}})
+  }
+
+  getUserAndBlogs(username) {
+    return this._http.get<any>("http://localhost:3000/blogs/get/" + username,{headers :{authorization : this.logedUser}})
   }
 
   searchUser(searched) {

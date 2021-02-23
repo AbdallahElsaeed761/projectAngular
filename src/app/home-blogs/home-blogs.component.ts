@@ -29,6 +29,7 @@ export class HomeBlogsComponent implements OnInit {
     }
     this.serviceblog.addComment(re).subscribe(
       a => {
+
         console.log(a);
 
       }
@@ -39,7 +40,8 @@ export class HomeBlogsComponent implements OnInit {
   ngOnInit(): void {
     this.serviceblog.getFollowingBlog().subscribe(
       a=>{
-        this.blogs=a.reverse();
+        console.log(a);
+        this.blogs=a.Blogs;
       }
     )
     this.userService.getUserData().subscribe(

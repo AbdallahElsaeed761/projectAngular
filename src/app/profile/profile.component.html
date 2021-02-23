@@ -42,8 +42,8 @@
           <span>{{user.firstname}} {{user.lastname}}</span><br>
           <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Follow</button><br /> -->
           <a routerLink="/addblog">Add Blogs</a>&nbsp;&nbsp;&nbsp;
-          <a routerLink="/follower">Followers</a>&nbsp;&nbsp;&nbsp;
-          <a routerLink="/following">Following</a>
+          <!-- <a routerLink="/follower">Followers</a>&nbsp;&nbsp;&nbsp;
+          <a routerLink="/following">Following</a> -->
       </div>
   </div>
 </div>
@@ -62,7 +62,7 @@
           <p (click)="del(item._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></p>
       </mat-card-title>
       <mat-card-subtitle>
-        <p routerLink="/blogs">{{item.tags}}</p>
+        <!-- <p routerLink="/blogs">{{item.tags}}</p> -->
 
       </mat-card-subtitle>
     </mat-card-header>

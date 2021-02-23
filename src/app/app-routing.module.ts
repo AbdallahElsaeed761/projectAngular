@@ -24,7 +24,7 @@ const routes: Routes = [
 {path:'addblog',component:BlogAddComponent},
 {path:'edit/:id',component:EditBlogComponent},
 {path:'homeBlog',component:HomeBlogsComponent},
-{path:'profile/:username',component:ProfileFriendComponent},
+{path:'profile/:_id',component:ProfileFriendComponent},
 {path:'search/:searched',component:SearchComponent},
 
 

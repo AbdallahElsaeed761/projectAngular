@@ -1,15 +1,4 @@
-<!-- <<<<<<< HEAD -->
-<!--
-<div *ngFor="let item of blogs" class="container text-center">
-  <a routerLink="/blogs">{{item.auther}}</a><br/>
-  <img [src]="'http://localhost:3000/'+item.photo" style="height: 500px; width: 500px; "><br/>
-  <a routerLink="/blogs">{{item.body}}</a><br/>
-  <a routerLink="/blogs">{{item.tags}}</a><br/>
-  <a routerLink="/blogs">{{item.updatedAt}}</a> <br/>
-  <a routerLink="/blogs">{{item.createdAt}}</a> <br/>
 
-  <hr/>
-</div> -->
 <body>
 
   <div class="container">
@@ -25,9 +14,9 @@
           <h2 >Blog Websites</h2>
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
-          <a class="text-muted" href="#">
+          <!-- <a class="text-muted" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
-          </a>
+          </a> -->
           <a class="btn" routerLink="/login">Login</a>
 
           <a class="btn" routerLink="/signUP">Sign Up</a>
@@ -57,10 +46,7 @@
     <p routerLink="/blogs">{{item.body}}
     </p>
   </mat-card-content>
-  <!-- <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions> -->
+
 </mat-card>
 
 </div>
